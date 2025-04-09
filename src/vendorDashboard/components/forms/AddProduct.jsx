@@ -61,7 +61,6 @@ const AddProduct = () => {
       setDescription("")
 
     } catch (error) {
-      console.error(data.message);
       alert("failed to add product")
     }
   }
@@ -100,7 +99,7 @@ const AddProduct = () => {
              </div>
     </div>
             <label>Description</label>
-            <input type="text"  onChange={(e)=>setDescription(e.target.value)}/>
+            <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)}/>
             <label>Product Image</label>
             <input type="file" onChange={handleImageUpload}/>
             <br />

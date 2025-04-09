@@ -4,6 +4,11 @@ import {API_URL} from '../../data/ApiPath';
 const Login = ({showWelcomeHandler}) => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
+  const [showPassword, setShowPassword] = useState(false)
+  
+  const handleShowPassword = ()=>{
+    setShowPassword(!showPassword);
+  }
 
   const loginHandler=async(e)=>{
     e.preventDefault();
@@ -26,16 +31,16 @@ const Login = ({showWelcomeHandler}) => {
     const vendorId=data.vendorId
     console.log("checking for vendorId:", vendorId)
     const vendorResponse=await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
+    window.location.reload()
     const vendorData=await vendorResponse.json();
     if(vendorResponse.ok){
       const vendorFirmId= vendorData.vendorFirmId;
-      // const vendorFirmname=vendorData.vendor.firm[0].vendorFirmname;
+      const vendorFirmname=vendorData.vendor.firm[0].vendorFirmname;
       localStorage.setItem('firmId',vendorFirmId);
-      // localStorage.setItem('firmname',vendorFirmname);
-      window.location.reload()
+      localStorage.setItem('firmname',vendorFirmname);
     }
   }catch(error){
-    console.error(error);
+    alert("login fail");
 
   }
   }
@@ -47,7 +52,10 @@ const Login = ({showWelcomeHandler}) => {
             <input type="text" name='email' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='enter your email' /><br />
 
             <label >Password</label>
-            <input type="password" name='password'  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='enter your password' /><br />
+            <input type={showPassword? "text":"password"} name='password'  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='enter your password' /><br />
+            <span className='showPassword'
+            onClick={handleShowPassword}
+            >{showPassword ? 'Hide' : 'Show'}</span>
             <div className="btnSubmit">
                 <button type='submit'>Submit</button>
             </div>

@@ -38,7 +38,7 @@ const Allproducts = () => {
      }
 
   return (
-    <div>
+    <div className='productSection'>
       {!products ? (
         <p>No Products added</p>
       ): (

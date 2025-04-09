@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {API_URL} from '../../data/ApiPath';
 
+
 const AddFirm = () => {
   const [firmname,setFirmname]=useState("");
   const [area,setArea]=useState("");
@@ -8,6 +9,7 @@ const AddFirm = () => {
   const [region,setRegion]=useState([]);
   const [offer,setOffer]=useState("");
   const [file,setFile]=useState(null);
+  
 
   const handleImageUpload=(event)=>{
     const selectedImage=event.target.files[0];
@@ -75,10 +77,13 @@ const AddFirm = () => {
      }else{
       alert('Failed to add Firm')
      }
-     console.log("this is firm Id",data.firmId);
+     
      const mango=data.firmId;
+     const vendorRestuarant=data.vendorFirmname
 
-     localStorage.setItem('firmId',mango)
+     localStorage.setItem('firmId',mango);
+     localStorage.setItem('firmname',vendorRestuarant)
+     window.location.reload()
 
   }catch(error){
     console.error("failed to add firm")
