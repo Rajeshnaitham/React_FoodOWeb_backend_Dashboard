@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/apple' element={<LandingPage/>}/>
+        <Route path='/' element={<LandingPage/>}/>
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
 
