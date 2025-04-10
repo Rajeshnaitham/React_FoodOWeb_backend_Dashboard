@@ -12,7 +12,7 @@ body{
     height: 80px;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(57, 57, 173);
+    background-color: #F46036;
     align-items: center;
     color: white;
     padding: 0 20px;
@@ -23,7 +23,8 @@ body{
     max-width: 15%;
     height: 95vh;
     padding-top: 10px;
-    background-color: lightgray;
+    background-color: #2E294E;
+    color: white;
 }
 .sideBarSection ul li{
     list-style: none;
